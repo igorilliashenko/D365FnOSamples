@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>IHORIL_JSONResponseMainContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContract]
+public final class IHORIL_JSONResponseMainContract
+{
+    str id;
+    boolean isSystemError;
+    List results;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmId</Name>
+				<Source><![CDATA[
+    [DataMember("id")]
+    public str parmId(str _value = id)
+    {
+        id = _value;
+        return id;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmIsSystemError</Name>
+				<Source><![CDATA[
+    [DataMember("isSystemError")]
+    public boolean parmIsSystemError(boolean _value = isSystemError)
+    {
+        isSystemError = _value;
+        return isSystemError;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmResults</Name>
+				<Source><![CDATA[
+    [
+        DataMemberAttribute("results"),
+        DataCollectionAttribute(Types::Class, classStr(IHORIL_JSONResponseSubContract))
+    ]
+    public List parmResults(List _value = results)
+    {
+        results = _value;
+        return results;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>IHORIL_BearerTokenContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContract]
+class IHORIL_BearerTokenContract
+{
+    str grantType;
+    str clientId;
+    str clientSecret;
+    str resource;
+    Str1260 accessToken;
+
+
+    }
+
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmGrantType</Name>
+				<Source><![CDATA[
+    [DataMember("grant_type")]
+    public str parmGrantType(str _grantType = grantType)
+    {
+        grantType = _grantType;
+        return grantType;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmClientId</Name>
+				<Source><![CDATA[
+    [DataMember("client_id")]
+    public str parmClientId(str _clientId = clientId)
+    {
+        clientId = _clientId;
+        return clientId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmClientSecret</Name>
+				<Source><![CDATA[
+    [DataMember("client_secret")]
+    public str parmClientSecret(str _clientSecret = clientSecret)
+    {
+        clientSecret = _clientSecret;
+        return clientSecret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmResource</Name>
+				<Source><![CDATA[
+    [DataMember("resource")]
+    public str parmResource(str _resource = resource)
+    {
+        resource = _resource;
+        return resource;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmAccessToken</Name>
+				<Source><![CDATA[
+    [DataMember("access_token")]
+    public Str1260 parmAccessToken(Str1260 _accessToken = accessToken)
+    {
+        accessToken = _accessToken;
+        return accessToken;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

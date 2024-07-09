@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>IHORIL_JSONResponseSubContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContract]
+public final class IHORIL_JSONResponseSubContract
+{
+    str subContractName;
+    List lines;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmSubContractName</Name>
+				<Source><![CDATA[
+    [DataMember("subContractName")]
+    public str parmSubContractName(str _value = subContractName)
+    {
+        subContractName = _value;
+        return subContractName;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmLines</Name>
+				<Source><![CDATA[
+    [
+        DataMemberAttribute("lines"),
+        DataCollectionAttribute(Types::Class, classStr(IHORIL_JSONResponseSubSubContract))
+    ]
+    public List parmLines(List _value = lines)
+    {
+        lines = _value;
+        return lines;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

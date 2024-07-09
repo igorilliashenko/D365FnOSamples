@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
-    <Model>DTR</Model>
+    <Model>D365FNOSamples</Model>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <OutputPath>bin</OutputPath>
     <SchemaVersion>2.0</SchemaVersion>
@@ -15,6 +15,7 @@
     <ProjectGuid>{f7ccb26e-3bbc-4c09-9779-9b7efea882d8}</ProjectGuid>
     <Name>JSONSamples</Name>
     <RootNamespace>JSONSamples</RootNamespace>
+    <StartupType>Class</StartupType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <Configuration>Debug</Configuration>
@@ -31,6 +32,51 @@
     <DebugSymbols>true</DebugSymbols>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AxClass\IHORIL_BearerToken">
+      <SubType>Content</SubType>
+      <Name>IHORIL_BearerToken</Name>
+      <Link>Classes\IHORIL_BearerToken</Link>
+    </Content>
+    <Content Include="AxClass\IHORIL_BearerTokenContract">
+      <SubType>Content</SubType>
+      <Name>IHORIL_BearerTokenContract</Name>
+      <Link>Classes\IHORIL_BearerTokenContract</Link>
+    </Content>
+    <Content Include="AxClass\IHORIL_JSONRequestDetailContract">
+      <SubType>Content</SubType>
+      <Name>IHORIL_JSONRequestDetailContract</Name>
+      <Link>Classes\IHORIL_JSONRequestDetailContract</Link>
+    </Content>
+    <Content Include="AxClass\IHORIL_JSONRequestMainContract">
+      <SubType>Content</SubType>
+      <Name>IHORIL_JSONRequestMainContract</Name>
+      <Link>Classes\IHORIL_JSONRequestMainContract</Link>
+    </Content>
+    <Content Include="AxClass\IHORIL_JSONResponseMainContract">
+      <SubType>Content</SubType>
+      <Name>IHORIL_JSONResponseMainContract</Name>
+      <Link>Classes\IHORIL_JSONResponseMainContract</Link>
+    </Content>
+    <Content Include="AxClass\IHORIL_JSONResponseSubContract">
+      <SubType>Content</SubType>
+      <Name>IHORIL_JSONResponseSubContract</Name>
+      <Link>Classes\IHORIL_JSONResponseSubContract</Link>
+    </Content>
+    <Content Include="AxClass\IHORIL_JSONResponseSubSubContract">
+      <SubType>Content</SubType>
+      <Name>IHORIL_JSONResponseSubSubContract</Name>
+      <Link>Classes\IHORIL_JSONResponseSubSubContract</Link>
+    </Content>
+    <Content Include="AxClass\IHORIL_JSONUsingSample">
+      <SubType>Content</SubType>
+      <Name>IHORIL_JSONUsingSample</Name>
+      <Link>Classes\IHORIL_JSONUsingSample</Link>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
   <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
 </Project>

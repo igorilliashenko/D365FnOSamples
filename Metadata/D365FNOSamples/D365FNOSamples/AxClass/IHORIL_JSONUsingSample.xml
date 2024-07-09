@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>IHORIL_JSONUsingSample</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Encoding;
+using System.Text.UTF8Encoding;
+using System;
+
+internal final class IHORIL_JSONUsingSample
+{
+    HttpRequestHeaders headers;
+    HttpClient httpClient;
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    public void new()
+    {
+        this.authorize();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>authorize</Name>
+				<Source><![CDATA[
+    private void authorize()
+    {
+        httpClient = new HttpClient();
+        
+        headers = httpClient.DefaultRequestHeaders;
+        
+        headers.Add("Ocp-Apim-Subscription-Key",'apimkey');
+        
+        /*var access_token = IHORIL_BearerToken::getToken();
+        headers.Authorization = new AuthenticationHeaderValue("Bearer", access_token);*/
+
+        //httpClient.BaseAddress = new Uri('endpointurl');
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>sendRequest</Name>
+				<Source><![CDATA[
+    public void sendRequest()
+    {
+        str responseContent;
+       
+            
+        try
+        {
+            var content = this.buildContent();
+            var httpResponse = httpClient.PostAsync('endpointURL', content).Result;
+            responseContent = httpResponse.Content.ReadAsStringAsync().Result;
+
+            IHORIL_JSONUsingSample::processJSONResponse(responseContent);
+        }
+        catch
+        {
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>buildContent</Name>
+				<Source><![CDATA[
+    private StringContent buildContent()
+    {
+        IHORIL_JSONRequestMainContract requestContract = new IHORIL_JSONRequestMainContract();
+        requestContract.parmRequestParm ('');
+        IHORIL_JSONRequestDetailContract details = new IHORIL_JSONRequestDetailContract();
+       
+        details.parmKey('key');
+        details.parmValue('value');
+        
+        List detailsList = new List(Types::Class);
+        detailsList.addEnd(details);
+
+        requestContract.parmDetails(detailsList);
+
+        var jsonBody = FormJsonSerializer::serializeClass(requestContract);
+
+        var content = new StringContent(jsonBody, Encoding::UTF8, "application/json");
+
+        return content;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>processJSONResponse</Name>
+				<Source><![CDATA[
+    public static void processJSONResponse(str _response)
+    {
+        try
+        {
+            List responses = FormJsonSerializer::deserializeCollection(classNum(List), _response,Types::Class, classStr(IHORIL_JSONResponseMainContract));
+        
+            if (responses)
+            {
+                var responsesEnumerator = responses.getEnumerator();
+                responsesEnumerator.reset();
+        
+                while(responsesEnumerator.moveNext())
+                {
+                    IHORIL_JSONResponseMainContract mainCntr = responsesEnumerator.current();
+                    
+                    var mainCntrEnumerator = mainCntr.parmResults().getEnumerator();
+                    mainCntrEnumerator.reset();
+
+                    while(mainCntrEnumerator.moveNext())
+                    {
+                        IHORIL_JSONResponseSubContract subCntr = mainCntrEnumerator.current();
+
+                        var linesEnumerator = subCntr.parmLines().getEnumerator();
+                        linesEnumerator.reset();
+        
+                        while(linesEnumerator.moveNext())
+                        {
+                            IHORIL_JSONResponseSubSubContract subSubCntr = linesEnumerator.current();
+                        }
+                    
+                    }
+                }
+            }
+            else
+            {
+                throw Global::error(_response);
+            }
+        }
+        catch
+        {
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

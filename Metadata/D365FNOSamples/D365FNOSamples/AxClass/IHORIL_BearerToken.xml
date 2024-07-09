@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>IHORIL_BearerToken</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+using System;
+using System.Net.Http;
+public class IHORIL_BearerToken
+{
+    str 1250 token;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>deserializeCustJson</Name>
+				<Source><![CDATA[
+    public static IHORIL_BearerTokenContract deserializeCustJson(str _jsonstring)
+    {
+        IHORIL_BearerTokenContract generateAccessTokenDataContract = FormJsonSerializer::deserializeObject(classNum(IHORIL_BearerTokenContract),_jsonstring);
+        return generateAccessTokenDataContract;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getToken</Name>
+				<Source><![CDATA[
+    public static str 1250 getToken()
+    {
+        
+        str clientAppId = '';
+        str clientAppSecret = '';
+        str resource = '';
+        var tokenurl = '';
+
+        IHORIL_BearerTokenContract tokenContract = new IHORIL_BearerTokenContract();
+
+        tokenContract.parmClientId(clientAppId);
+        tokenContract.parmClientSecret(clientAppSecret);
+        tokenContract.parmGrantType("client_credentials");
+        tokenContract.parmResource(resource);
+        
+        var httpClient = new HttpClient();
+        var request = new HttpRequestMessage();
+        request.Method = HttpMethod::Post;
+        request.RequestUri = new Uri(tokenurl);
+        var content = new MultipartFormDataContent();
+
+        content.Add(new StringContent(tokenContract.parmClientId()), "client_id");
+        content.Add(new StringContent(tokenContract.parmClientSecret()), "client_secret");
+        content.Add(new StringContent(tokenContract.parmResource()), "resource");
+        content.Add(new StringContent(tokenContract.parmGrantType()), "grant_type");
+        
+        var response = httpClient.PostAsync(tokenurl, content).Result;
+
+        var responseContent = response.Content.ReadAsStringAsync().Result;
+        
+        tokenContract = IHORIL_BearerToken::deserializeCustJson(responseContent);
+        str token = tokenContract.parmAccessToken();
+
+        return token;
+ 
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

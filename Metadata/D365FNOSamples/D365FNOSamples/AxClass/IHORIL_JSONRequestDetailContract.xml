@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>IHORIL_JSONRequestDetailContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContract]
+public class IHORIL_JSONRequestDetailContract
+{
+    str key;
+    str value;
+
+   
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmKey</Name>
+				<Source><![CDATA[
+    [DataMember("key")]
+    public str parmKey(str _key = key)
+    {
+        key = _key;
+        return key;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmValue</Name>
+				<Source><![CDATA[
+    [
+        DataMember("value")
+    ]
+    public Str parmValue(Str _value = value)
+    {
+        value = _value;
+        return value;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>IHORIL_JSONRequestMainContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContract]
+public class IHORIL_JSONRequestMainContract
+{
+    str requestParm;
+    boolean isAggregated;
+    List details;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmRequestParm</Name>
+				<Source><![CDATA[
+    [DataMember("requestParm")]
+    public str parmRequestParm(str _value = requestParm)
+    {
+        requestParm = _value;
+        return requestParm;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmDetails</Name>
+				<Source><![CDATA[
+    [
+        DataMemberAttribute("details"),
+        DataCollectionAttribute(Types::Class, classStr(IHORIL_JSONRequestDetailContract))
+    ]
+    public List parmDetails(List _value = details)
+    {
+        details = _value;
+        return details;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
