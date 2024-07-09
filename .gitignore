@@ -6,3 +6,9 @@
 *.json
 /Project/JSONSamples/JSONSamples/obj/Debug
 *.suo
+*.vsidx
+/Metadata/D365FNOSamples/XppMetadata/D365FNOSamples/AxClass
+/Metadata/D365FNOSamples/BuildProjectResult.err.xml
+/Metadata/D365FNOSamples/BuildProjectResult.log
+/Metadata/D365FNOSamples/BuildProjectResult.xml
+/Metadata/D365FNOSamples/bin
